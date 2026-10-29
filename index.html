@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MELT: brownies artesanais com recheio saboroso.">
+    <title>MELT - Brownies Artesanais Recheados</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- ============ CABEÇALHO ============ -->
+    <header class="topo">
+        <a href="#inicio" class="logo" aria-label="Voltar para o início">
+            <span>MELT</span>
+        </a>
+
+        <nav class="menu" aria-label="Navegação principal">
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#produtos">Produtos</a>
+            <a href="#encomendas">Encomendas</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ============ INÍCIO ============ -->
+        <section id="inicio" class="hero" aria-labelledby="titulo-hero">
+            <div class="hero-conteudo">
+                <h1 id="titulo-hero" class="hero-marca">MELT</h1>
+                <p class="hero-texto">Brownies com recheio saboroso, macios por dentro.</p>
+                <div class="hero-acoes">
+                    <a href="#produtos" class="btn">Ver produtos</a>
+                    <a href="#encomendas" class="btn btn-contorno">Fazer encomenda</a>
+                </div>
+            </div>
+            <div class="gotas" aria-hidden="true"></div>
+        </section>
+
+        <!-- ============ SOBRE ============ -->
+        <section id="sobre" class="secao secao-clara" aria-labelledby="titulo-sobre">
+            <div class="container sobre">
+                <div class="sobre-texto">
+                    <h2 id="titulo-sobre">Feito em pequenos lotes, servido ainda macio</h2>
+                    <p>A MELT nasceu de uma obsessão simples: o brownie perfeito é crocante por fora e quase fudge por dentro. Assamos poucas formas por dia para que cada pedaço chegue até você fresco.</p>
+                </div>
+                <ul class="sobre-lista">
+                    <li>
+                        <h3>Chocolate de verdade</h3>
+                        <p>Cacau de qualidade e manteiga, sem essências artificiais.</p>
+                    </li>
+                    <li>
+                        <h3>Assado todo dia</h3>
+                        <p>Fornadas pequenas, cortadas com precisão.</p>
+                    </li>
+                    <li>
+                        <h3>Macio por dentro</h3>
+                        <p>Tiramos do forno no ponto exato para manter o miolo macio.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ PRODUTOS ============ -->
+        <section id="produtos" class="secao secao-rosa" aria-labelledby="titulo-produtos">
+            <div class="container">
+                <h2 id="titulo-produtos">Nossos brownies</h2>
+                <p class="subtitulo">Cada unidade tem cerca de 112 g. Peça avulso ou em caixa.</p>
+
+                <div class="grade-produtos">
+                    <article class="card" style="--sabor:#3a1a0f;">
+                        <div class="card-topo"><span class="selo">Mais pedido</span></div>
+                        <div class="card-corpo">
+                            <h3>Tradicional de Brigadeiro</h3>
+                            <p>Chocolate 50% com miolo cremoso e casquinha crocante.</p>
+                            <div class="card-rodape">
+                                <strong class="preco">R$ 7,00</strong>
+                                <a href="#encomendas" class="btn btn-pequeno">Encomendar</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card" style="--sabor:#f8f3c6;">
+                        <div class="card-topo"></div>
+                        <div class="card-corpo">
+                            <h3>Ninho</h3>
+                            <p>Massa de chocolate com camadas de creme de leite Ninho.</p>
+                            <div class="card-rodape">
+                                <strong class="preco">R$ 7,00</strong>
+                                <a href="#encomendas" class="btn btn-pequeno">Encomendar</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card" style="--sabor:#ba8a43;">
+                        <div class="card-topo"></div>
+                        <div class="card-corpo">
+                            <h3>Doce de Leite</h3>
+                            <p>Brownie de Doce de Leite clássico.</p>
+                            <div class="card-rodape">
+                                <strong class="preco">R$ 7,00</strong>
+                                <a href="#encomendas" class="btn btn-pequeno">Encomendar</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card" style="--sabor:#fff04a;">
+                        <div class="card-topo maracuja"></div>
+                        <div class="card-corpo">
+                            <h3>Maracujá</h3>
+                            <p>Recheio de redução de maracujá natural.</p>
+                            <div class="card-rodape">
+                                <strong class="preco">R$ 7,00</strong>
+                                <a href="#encomendas" class="btn btn-pequeno">Encomendar</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card" style="--sabor:#c90f1f;">
+                        <div class="card-topo"><span class="selo">Artesanal</span></div>
+                        <div class="card-corpo">
+                            <h3>Goiabada</h3>
+                            <p>Goiabada cremosa e artesanal.</p>
+                            <div class="card-rodape">
+                                <strong class="preco">R$ 7,00</strong>
+                                <a href="#encomendas" class="btn btn-pequeno">Encomendar</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card" style="--sabor:#4f3c41;">
+                        <div class="card-topo caixa-degustacao"><span class="selo">Para presentear</span></div>
+                        <div class="card-corpo">
+                            <h3>Caixa MENU DEGUSTAÇÃO</h3>
+                            <p>Um de cada sabor do cardápio, em caixa para presente.</p>
+                            <div class="card-rodape">
+                                <strong class="preco">R$ 40,00</strong>
+                                <a href="#encomendas" class="btn btn-pequeno">Encomendar</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ENCOMENDAS (FORMULÁRIO) ============ -->
+        <section id="encomendas" class="secao secao-escura" aria-labelledby="titulo-encomendas">
+            <div class="container encomenda">
+                <div class="encomenda-texto">
+                    <h2 id="titulo-encomendas">Faça sua encomenda</h2>
+                    <p>Preencha o formulário e confirmamos o pedido por e-mail ou WhatsApp. Pedimos 48 horas de antecedência para encomendas acima de 12 unidades.</p>
+                </div>
+
+                <form id="form-encomenda" class="formulario" action="#" method="post">
+                    <div class="campo">
+                        <label for="nome">Nome completo</label>
+                        <input type="text" id="nome" name="nome" required minlength="3" maxlength="60" autocomplete="name" placeholder="Ex.: Maria Silva">
+                        <span class="erro">Digite seu nome com pelo menos 3 letras.</span>
+                    </div>
+
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required autocomplete="email" placeholder="voce@email.com">
+                            <span class="erro">Digite um e-mail válido, como voce@email.com.</span>
+                        </div>
+                        <div class="campo">
+                            <label for="telefone">Telefone / WhatsApp</label>
+                            <input type="tel" id="telefone" name="telefone" required autocomplete="tel"
+                                   pattern="\(?\d{2}\)?\s?9?\d{4}-?\d{4}" placeholder="(86) 99999-9999"
+                                   title="Digite o DDD e o número. Exemplo: (86) 99999-9999">
+                            <span class="erro">Digite o DDD e o número. Exemplo: (86) 99999-9999.</span>
+                        </div>
+                    </div>
+
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="sabor">Sabor</label>
+                            <select id="sabor" name="sabor" required>
+                                <option value="" disabled selected>Escolha um sabor</option>
+                                <option>Tradicional de Brigadeiro</option>
+                                <option>Ninho</option>
+                                <option>Doce de Leite</option>
+                                <option>Maracujá</option>
+                                <option>Goiabada</option>
+                                <option>Caixa MENU DEGUSTAÇÃO</option>
+                            </select>
+                            <span class="erro">Escolha um sabor.</span>
+                        </div>
+                        <div class="campo">
+                            <label for="quantidade">Quantidade</label>
+                            <input type="number" id="quantidade" name="quantidade" required min="1" max="50" value="1" inputmode="numeric">
+                            <span class="erro">Informe uma quantidade entre 1 e 50.</span>
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label for="retirada">Data de retirada</label>
+                        <input type="date" id="retirada" name="retirada" required>
+                        <span class="erro">Escolha a data de retirada.</span>
+                    </div>
+
+                    <div class="campo">
+                        <label for="obs">Observações <small>(opcional)</small></label>
+                        <textarea id="obs" name="obs" rows="3" maxlength="200" placeholder="Alergias, mensagem para cartão, horário preferido..."></textarea>
+                    </div>
+
+                    <div class="campo campo-check">
+                        <input type="checkbox" id="aceite" name="aceite" required>
+                        <label for="aceite">Aceito receber a confirmação da encomenda por e-mail ou WhatsApp.</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-grande">Enviar encomenda</button>
+                    <p id="status-form" class="status-form" role="status" aria-live="polite" hidden></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- ============ CONTATO ============ -->
+        <section id="contato" class="secao secao-clara" aria-labelledby="titulo-contato">
+            <div class="container contato">
+                <h2 id="titulo-contato">Endereço de retirada.</h2>
+                <address class="contato-dados">
+                    <p><strong>Endereço</strong><br>Rua Oito, 3484 - Val# ##### ###</p>
+                    <p><strong>Horário</strong><br>Seg a sáb, das 10h às 19h</p>
+                    <p><strong>E-mail</strong><br><a href="mailto:browniemelt@gmail.com">browniemelt@gmail.com</a></p>
+                </address>
+                <a id="whats" href="https://wa.me/5586999999999" class="btn" target="_blank" rel="noopener">Falar no WhatsApp</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============ RODAPÉ ============ -->
+    <footer class="rodape">
+        <p>© 2026 MELT Brownies. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- ============ CHAT FLUTUANTE (assistente de IA) ============ -->
+    <!-- O checkbox controla abrir/fechar apenas com CSS. Depois você pode trocar por JavaScript. -->
+    <input type="checkbox" id="chat-toggle" class="chat-toggle" aria-label="Abrir ou fechar o assistente virtual">
+
+    <label for="chat-toggle" class="chat-botao" aria-hidden="true">
+        <svg class="icone-chat" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" fill="currentColor"/>
+        </svg>
+        <svg class="icone-fechar" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg>
+    </label>
+
+    <section class="chat" aria-label="Assistente virtual da MELT">
+        <header class="chat-topo">
+            <div class="chat-avatar" aria-hidden="true">M</div>
+            <div class="chat-titulo">
+                <strong>Assistente MELT</strong>
+                <span><i class="ponto-online" aria-hidden="true"></i> Online agora</span>
+            </div>
+            <label for="chat-toggle" class="chat-fechar" aria-hidden="true">&times;</label>
+        </header>
+
+        <div id="chat-mensagens" class="chat-mensagens" role="log" aria-live="polite">
+            <div class="msg bot">Oi! Eu sou o assistente da MELT. Posso ajudar com sabores, preços e encomendas.</div>
+            <div class="msg usuario">A goiabada é aquela de mercado?</div>
+            <div class="msg bot">O de goiabada é feito de goiabada artesanal.</div>
+            <div class="msg bot digitando" aria-label="Assistente digitando">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <div class="chat-sugestoes">
+            <button type="button" class="chip">Ver cardápio</button>
+            <button type="button" class="chip">Horário</button>
+            <button type="button" class="chip">Como encomendar</button>
+        </div>
+
+        <form class="chat-form" action="#" onsubmit="return false;">
+            <label for="chat-input" class="sr-only">Digite sua mensagem</label>
+            <input type="text" id="chat-input" placeholder="Digite sua mensagem..." autocomplete="off">
+            <button type="submit" id="chat-enviar" class="chat-enviar" aria-label="Enviar mensagem">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8-8-2Z" fill="currentColor"/></svg>
+            </button>
+        </form>
+    </section>
+
+</body>
+</html>
