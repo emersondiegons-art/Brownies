@@ -810,3 +810,64 @@ a {
         transition: none !important;
     }
 }
+/* ===== FOTOS PASSANDO NO INÍCIO (só CSS) ===== */
+.hero-conteudo {
+    position: relative;
+    z-index: 1; /* deixa o texto acima das fotos */
+}
+
+.hero-fotos {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero-fotos img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: passar-fotos 20s infinite;
+}
+
+/* cada foto começa 5 segundos depois da anterior */
+.hero-fotos img:nth-child(1) { animation-delay: 0s; }
+.hero-fotos img:nth-child(2) { animation-delay: 5s; }
+.hero-fotos img:nth-child(3) { animation-delay: 10s; }
+.hero-fotos img:nth-child(4) { animation-delay: 15s; }
+
+/* escurece as fotos para o texto continuar legível */
+.hero-fotos::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+        rgba(42, 20, 12, .9) 0%,
+        rgba(42, 20, 12, .7) 60%,
+        rgba(42, 20, 12, .35) 100%);
+}
+
+/* aparece em 1s, fica visível por 5s, some em 1s (junto com a próxima entrando) */
+@keyframes passar-fotos {
+    0%   { opacity: 0; }
+    5%   { opacity: 1; }
+    25%  { opacity: 1; }
+    30%  { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* no celular o texto ocupa a tela toda, então o escurecido é uniforme */
+@media (max-width: 640px) {
+    .hero-fotos::after {
+        background: rgba(42, 20, 12, .72);
+    }
+}
+
+/* para quem desativa animações: mostra só a primeira foto, parada */
+@media (prefers-reduced-motion: reduce) {
+    .hero-fotos img { animation: none; }
+    .hero-fotos img:first-child { opacity: 1; }
+}
