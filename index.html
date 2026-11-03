@@ -6,17 +6,16 @@
     <meta name="description" content="MELT: brownies artesanais com recheio saboroso.">
     <title>MELT - Brownies Artesanais Recheados</title>
 
-     <link rel="stylesheet" href="style.css">
-    <script src="config.js" defer></script>
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-</head>
-
 </head>
 <body>
-    <script src="script.js" defer></script>
+
     <!-- ============ CABEÇALHO ============ -->
     <header class="topo">
-        <a href="#inicio" class="logo" aria-label="Voltar para o início">
+        <a href="#inicio" class="logo" aria-label="MELT - ir para o início">
+                <path d="M12 1C12 1 2 14 2 21a10 10 0 0 0 20 0C22 14 12 1 12 1Z" fill="currentColor"/>
+            </svg>
             <span>MELT</span>
         </a>
 
@@ -34,11 +33,11 @@
         <!-- ============ INÍCIO ============ -->
         <section id="inicio" class="hero" aria-labelledby="titulo-hero">
             <div class="hero-fotos" aria-hidden="true">
-    <img src="WhatsApp Image 2026-10-30 at 08.59.25 (1).jpeg" alt="">
-    <img src="WhatsApp Image 2026-10-30 at 08.59.25 (2).jpeg" alt="">
-    <img src="WhatsApp Image 2026-10-30 at 08.59.25 (3).jpeg" alt="">
-    <img src="WhatsApp Image 2026-10-30 at 08.59.25.jpeg" alt="">
-</div>
+                <img src="WhatsApp Image 2026-10-30 at 08.59.25 (1).jpeg" alt="">
+                <img src="WhatsApp Image 2026-10-30 at 08.59.25 (2).jpeg" alt="">
+                <img src="WhatsApp Image 2026-10-30 at 08.59.25 (3).jpeg" alt="">
+                <img src="WhatsApp Image 2026-10-30 at 08.59.25.jpeg" alt="">
+            </div>
             <div class="hero-conteudo">
                 <h1 id="titulo-hero" class="hero-marca">MELT</h1>
                 <p class="hero-texto">Brownies com recheio saboroso, macios por dentro.</p>
@@ -186,36 +185,57 @@
                         </div>
                     </div>
 
+                    <!-- CARRINHO: escolha um sabor, clique em "Adicionar" e repita para outros sabores -->
+                    <fieldset class="pedido">
+                        <legend>Monte seu pedido</legend>
+
+                        <div class="linha-pedido">
+                            <div class="campo">
+                                <label for="sabor">Sabor</label>
+                                <select id="sabor">
+                                    <option value="" disabled selected>Escolha um sabor</option>
+                                    <option value="Tradicional de Brigadeiro" data-preco="7">Tradicional de Brigadeiro - R$ 7,00</option>
+                                    <option value="Ninho" data-preco="7">Ninho - R$ 7,00</option>
+                                    <option value="Doce de Leite" data-preco="7">Doce de Leite - R$ 7,00</option>
+                                    <option value="Maracujá" data-preco="7">Maracujá - R$ 7,00</option>
+                                    <option value="Goiabada" data-preco="7">Goiabada - R$ 7,00</option>
+                                    <option value="Caixa MENU DEGUSTAÇÃO" data-preco="40">Caixa MENU DEGUSTAÇÃO - R$ 40,00</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label for="quantidade">Qtd.</label>
+                                <input type="number" id="quantidade" value="1" inputmode="numeric">
+                            </div>
+                            <button type="button" id="btn-adicionar" class="btn btn-adicionar">Adicionar</button>
+                        </div>
+
+                        <span id="carrinho-erro" class="erro" role="alert"></span>
+
+                        <ul id="carrinho-lista" class="carrinho-lista" aria-live="polite"></ul>
+                        <p id="carrinho-vazio" class="carrinho-vazio">Nenhum sabor adicionado ainda.</p>
+
+                        <p class="carrinho-total">Total <strong id="carrinho-total">R$ 0,00</strong></p>
+                        <input type="hidden" name="pedido" id="pedido-json">
+                    </fieldset>
+
+                    <!-- RETIRADA: data + horário -->
                     <div class="linha">
                         <div class="campo">
-                            <label for="sabor">Sabor</label>
-                            <select id="sabor" name="sabor" required>
-                                <option value="" disabled selected>Escolha um sabor</option>
-                                <option>Tradicional de Brigadeiro</option>
-                                <option>Ninho</option>
-                                <option>Doce de Leite</option>
-                                <option>Maracujá</option>
-                                <option>Goiabada</option>
-                                <option>Caixa MENU DEGUSTAÇÃO</option>
-                            </select>
-                            <span class="erro">Escolha um sabor.</span>
+                            <label for="retirada">Data de retirada</label>
+                            <input type="date" id="retirada" name="retirada" required>
+                            <span class="erro" id="erro-retirada">Escolha a data de retirada.</span>
                         </div>
                         <div class="campo">
-                            <label for="quantidade">Quantidade</label>
-                            <input type="number" id="quantidade" name="quantidade" required min="1" max="50" value="1" inputmode="numeric">
-                            <span class="erro">Informe uma quantidade entre 1 e 50.</span>
+                            <label for="hora">Horário de retirada</label>
+                            <input type="time" id="hora" name="hora" required min="10:00" max="19:00">
+                            <span class="erro" id="erro-hora">Escolha um horário entre 10h e 19h.</span>
                         </div>
                     </div>
-
-                    <div class="campo">
-                        <label for="retirada">Data de retirada</label>
-                        <input type="date" id="retirada" name="retirada" required>
-                        <span class="erro">Escolha a data de retirada.</span>
-                    </div>
+                    <p class="aviso-retirada">Retiradas de segunda a sábado, das 10h às 19h.</p>
 
                     <div class="campo">
                         <label for="obs">Observações <small>(opcional)</small></label>
-                        <textarea id="obs" name="obs" rows="3" maxlength="200" placeholder="Alergias, mensagem para cartão, horário preferido..."></textarea>
+                        <textarea id="obs" name="obs" rows="3" maxlength="200" placeholder="Alergias, mensagem para cartão..."></textarea>
                     </div>
 
                     <div class="campo campo-check">
@@ -224,7 +244,6 @@
                     </div>
 
                     <button type="submit" class="btn btn-grande">Enviar encomenda</button>
-                    <p id="status-form" class="status-form" role="status" aria-live="polite" hidden></p>
                 </form>
             </div>
         </section>
@@ -273,10 +292,7 @@
         </header>
 
         <div id="chat-mensagens" class="chat-mensagens" role="log" aria-live="polite">
-            <div class="msg bot">Oi! Eu sou o assistente da MELT. Posso ajudar com sabores, preços e encomendas.
-
-            </div>
-            </div>
+            <div class="msg bot">Oi! Eu sou o assistente da MELT. Posso ajudar com sabores, preços e encomendas.</div>
         </div>
 
         <div class="chat-sugestoes">
@@ -285,13 +301,13 @@
             <button type="button" class="chip">Como encomendar</button>
         </div>
 
-        <form class="chat-form" action="#" onsubmit="return false;">
+        <div class="chat-form">
             <label for="chat-input" class="sr-only">Digite sua mensagem</label>
             <input type="text" id="chat-input" placeholder="Digite sua mensagem..." autocomplete="off">
-            <button type="submit" id="chat-enviar" class="chat-enviar" aria-label="Enviar mensagem">
+            <button type="button" id="chat-enviar" class="chat-enviar" aria-label="Enviar mensagem">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8-8-2Z" fill="currentColor"/></svg>
             </button>
-        </form>
+        </div>
     </section>
 
 </body>
