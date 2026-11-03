@@ -1,12 +1,31 @@
 /* =====================================================
    MELT Brownies
-   Paleta:
-   --cacau       #2a140c  fundo escuro e texto
-   --fudge       #4b2416  tom secundário escuro
-   --framboesa   #d9184f  cor de destaque (botões, links)
-   --blush       #fde7ec  fundo rosado suave
-   --acucar      #fffaf8  fundo claro
-   Tipografia: Fraunces (títulos) + DM Sans (texto)
+
+   PALETA PRINCIPAL (variáveis do :root)
+   --cacau            #2a140c  fundo escuro e texto
+   --fudge            #4b2416  tom secundário escuro (seção de encomendas)
+   --framboesa        #d9184f  cor de destaque (botões, links)
+   --framboesa-escura #b3123f  botão ao passar o mouse
+   --blush            #fde7ec  fundo rosado suave
+   --acucar           #fffaf8  fundo claro
+
+   CORES DE APOIO
+   --suave            #6e5148  textos secundários
+   --borda            #e3cfc8  bordas dos campos
+   --ok               #2e7d5b  campo válido no formulário
+
+   CORES DAS FAIXAS DOS CARDS DE SABORES
+   (definidas no index.html, em style="--sabor:...")
+   Tradicional de Brigadeiro  #3a1a0f  marrom chocolate
+   Ninho                      #f8f3c6  creme claro
+   Doce de Leite              #ba8a43  caramelo
+   Maracujá                   #f2c200  amarelo, com pontos #1a1a1a (classe .maracuja)
+   Goiabada                   #c90f1f  vermelho
+   Caixa MENU DEGUSTAÇÃO      #4f3c41  marrom acinzentado (coberto pela foto caixa.jpg)
+
+   TIPOGRAFIA
+   Marca MELT (logo e título principal): Sniglet 800 (Google Fonts)
+   Títulos: Fraunces (reserva: Georgia) | Texto: DM Sans (reserva: Segoe UI)
    ===================================================== */
 
 :root {
@@ -20,6 +39,7 @@
     --borda: #e3cfc8;
     --ok: #2e7d5b;
 
+    --fonte-marca: "Sniglet", "Varela Round", "Arial Rounded MT Bold", sans-serif;
     --fonte-titulo: "Fraunces", Georgia, "Times New Roman", serif;
     --fonte-texto: "DM Sans", "Segoe UI", Arial, sans-serif;
 
@@ -88,16 +108,10 @@ a {
     gap: 8px;
     color: var(--blush);
     text-decoration: none;
-    font-family: var(--fonte-titulo);
-    font-weight: 900;
+    font-family: var(--fonte-marca);
+    font-weight: 800;
     font-size: 1.7rem;
     letter-spacing: .04em;
-}
-
-.logo-gota {
-    width: 16px;
-    height: 22px;
-    color: var(--framboesa);
 }
 
 .menu {
@@ -206,10 +220,11 @@ a {
 }
 
 .hero-marca {
+    font-family: var(--fonte-marca);
     font-size: clamp(5.5rem, 24vw, 15rem);
-    font-weight: 900;
+    font-weight: 800;
     line-height: .85;
-    letter-spacing: -.03em;
+    letter-spacing: -.01em;
     color: var(--blush);
 }
 
@@ -810,6 +825,124 @@ a {
         transition: none !important;
     }
 }
+
+
+/* ===== PEDIDO: SABORES + CARRINHO + RETIRADA ===== */
+.pedido {
+    display: grid;
+    gap: 14px;
+    min-width: 0;
+    padding: 18px;
+    border: 2px solid var(--borda);
+    border-radius: 12px;
+}
+
+.pedido legend {
+    padding: 0 8px;
+    font-weight: 700;
+}
+
+.linha-pedido {
+    display: grid;
+    grid-template-columns: 1fr 90px auto;
+    gap: 12px;
+    align-items: end;
+}
+
+.btn-adicionar {
+    padding: 12px 20px;
+}
+
+/* mensagem de erro do carrinho (aparece pelo JavaScript) */
+.erro.visivel {
+    display: block;
+}
+
+.carrinho-lista {
+    display: grid;
+    gap: 10px;
+    list-style: none;
+}
+
+.carrinho-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: var(--blush);
+    border-radius: 10px;
+}
+
+.carrinho-info {
+    display: grid;
+}
+
+.carrinho-info span {
+    color: var(--suave);
+    font-size: .9rem;
+}
+
+.carrinho-acoes {
+    display: flex;
+    gap: 6px;
+}
+
+.carrinho-acoes button {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 12px;
+    border: 2px solid var(--framboesa);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--framboesa-escura);
+    font: 700 .9rem var(--fonte-texto);
+    cursor: pointer;
+}
+
+.carrinho-acoes button:hover {
+    background: var(--framboesa);
+    color: #fff;
+}
+
+.carrinho-vazio {
+    color: var(--suave);
+    font-size: .95rem;
+}
+
+.carrinho-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 12px;
+    border-top: 2px dashed var(--borda);
+    font-weight: 700;
+}
+
+.carrinho-total strong {
+    font-family: var(--fonte-titulo);
+    font-size: 1.4rem;
+}
+
+.aviso-retirada {
+    margin-top: -8px;
+    color: var(--suave);
+    font-size: .85rem;
+}
+
+@media (max-width: 640px) {
+    .linha-pedido {
+        grid-template-columns: 1fr 80px;
+    }
+
+    .btn-adicionar {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+}
+
+
 /* ===== FOTOS PASSANDO NO INÍCIO (só CSS) ===== */
 .hero-conteudo {
     position: relative;
@@ -850,7 +983,6 @@ a {
         rgba(42, 20, 12, .35) 100%);
 }
 
-/* aparece em 1s, fica visível por 5s, some em 1s (junto com a próxima entrando) */
 @keyframes passar-fotos {
     0%   { opacity: 0; }
     5%   { opacity: 1; }
@@ -859,7 +991,6 @@ a {
     100% { opacity: 0; }
 }
 
-/* no celular o texto ocupa a tela toda, então o escurecido é uniforme */
 @media (max-width: 640px) {
     .hero-fotos::after {
         background: rgba(42, 20, 12, .72);
