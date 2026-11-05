@@ -1,5 +1,4 @@
-/* =====================================================
-   MELT Brownies
+/* MELT Brownies
 
    PALETA PRINCIPAL (variáveis do :root)
    --cacau            #2a140c  fundo escuro e texto
@@ -15,18 +14,17 @@
    --ok               #2e7d5b  campo válido no formulário
 
    CORES DAS FAIXAS DOS CARDS DE SABORES
-   (definidas no index.html, em style="--sabor:...")
+   (definidas no index.html, em style="--sabor:...", exceto Maracujá e Caixa, que usam a própria classe)
    Tradicional de Brigadeiro  #3a1a0f  marrom chocolate
    Ninho                      #f8f3c6  creme claro
    Doce de Leite              #ba8a43  caramelo
-   Maracujá                   #f2c200  amarelo, com pontos #1a1a1a (classe .maracuja)
+   Maracujá                   #f2c200  amarelo, com pontos #1a1a1a (definido direto na classe .maracuja)
    Goiabada                   #c90f1f  vermelho
-   Caixa MENU DEGUSTAÇÃO      #4f3c41  marrom acinzentado (coberto pela foto caixa.jpg)
+   Caixa MENU DEGUSTAÇÃO      #b98a5e  marrom de papel (definido na classe .caixa-degustacao, coberto pela foto caixa.jpg)
 
    TIPOGRAFIA
    Marca MELT (logo e título principal): Sniglet 800 (Google Fonts)
-   Títulos: Fraunces (reserva: Georgia) | Texto: DM Sans (reserva: Segoe UI)
-   ===================================================== */
+   Títulos: Fraunces (reserva: Georgia) | Texto: DM Sans (reserva: Segoe UI) */
 
 :root {
     --cacau: #2a140c;
@@ -87,7 +85,7 @@ a {
     white-space: nowrap;
 }
 
-/* ================= CABEÇALHO ================= */
+/* CABEÇALHO */
 .topo {
     position: sticky;
     top: 0;
@@ -99,13 +97,9 @@ a {
     gap: 8px 24px;
     padding: 14px 28px;
     background: var(--cacau);
-    color: #fff;
 }
 
 .logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
     color: var(--blush);
     text-decoration: none;
     font-family: var(--fonte-marca);
@@ -132,7 +126,7 @@ a {
     border-bottom-color: var(--framboesa);
 }
 
-/* ================= SEÇÕES ================= */
+/* SEÇÕES */
 .secao {
     padding: 88px 24px;
     scroll-margin-top: 64px;
@@ -159,7 +153,7 @@ a {
     max-width: 60ch;
 }
 
-/* ================= BOTÕES ================= */
+/* BOTÕES */
 .btn {
     display: inline-block;
     padding: 12px 26px;
@@ -201,7 +195,7 @@ a {
     font-size: 1.05rem;
 }
 
-/* ================= INÍCIO (HERO) ================= */
+/* INÍCIO (HERO) */
 .hero {
     position: relative;
     display: flex;
@@ -217,6 +211,8 @@ a {
     width: 100%;
     max-width: var(--largura);
     margin: 0 auto;
+    position: relative;
+    z-index: 1; /* deixa o texto acima das fotos */
 }
 
 .hero-marca {
@@ -225,7 +221,6 @@ a {
     font-weight: 800;
     line-height: .85;
     letter-spacing: -.01em;
-    color: var(--blush);
 }
 
 .hero-texto {
@@ -256,7 +251,7 @@ a {
     background-repeat: repeat-x;
 }
 
-/* ================= SOBRE ================= */
+/* SOBRE */
 .sobre {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
@@ -289,7 +284,7 @@ a {
     color: var(--suave);
 }
 
-/* ================= PRODUTOS (GRID DE CARDS) ================= */
+/* PRODUTOS (GRID DE CARDS) */
 .grade-produtos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -310,6 +305,7 @@ a {
     padding: 14px;
     background: var(--sabor, var(--fudge));
 }
+
 .card-topo.maracuja {
     background-color: #f2c200; /* amarelo */
     background-image:
@@ -326,6 +322,7 @@ a {
     background-size: cover;
     background-position: center;
 }
+
 .selo {
     display: inline-block;
     padding: 4px 12px;
@@ -367,7 +364,7 @@ a {
     font-weight: 900;
 }
 
-/* ================= FORMULÁRIO ================= */
+/* FORMULÁRIO */
 .encomenda {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -436,8 +433,7 @@ a {
 }
 
 /* Validação visual: só aparece depois que a pessoa interage com o campo */
-.campo input:user-invalid,
-.campo select:user-invalid {
+.campo input:user-invalid {
     border-color: var(--framboesa);
     background: #fff5f7;
 }
@@ -454,8 +450,7 @@ a {
     font-weight: 500;
 }
 
-.campo input:user-invalid ~ .erro,
-.campo select:user-invalid ~ .erro {
+.campo input:user-invalid ~ .erro {
     display: block;
 }
 
@@ -476,19 +471,7 @@ a {
     font-weight: 400;
 }
 
-.status-form {
-    padding: 12px 14px;
-    border-radius: 10px;
-    background: #e6f4ed;
-    color: #1d5a40;
-    font-weight: 500;
-}
-
-.status-form[hidden] {
-    display: none;
-}
-
-/* ================= CONTATO ================= */
+/* CONTATO */
 .contato-dados {
     display: flex;
     flex-wrap: wrap;
@@ -502,7 +485,7 @@ a {
     color: var(--cacau);
 }
 
-/* ================= RODAPÉ ================= */
+/* RODAPÉ */
 .rodape {
     padding: 24px;
     background: var(--cacau);
@@ -511,7 +494,7 @@ a {
     font-size: .9rem;
 }
 
-/* ================= CHAT FLUTUANTE ================= */
+/* CHAT FLUTUANTE */
 /* checkbox invisível que controla o estado aberto/fechado */
 .chat-toggle {
     position: fixed;
@@ -541,7 +524,6 @@ a {
 }
 
 .chat-botao svg {
-    grid-area: 1 / 1;
     width: 26px;
     height: 26px;
 }
@@ -568,7 +550,6 @@ a {
     flex-direction: column;
     width: min(370px, calc(100vw - 32px));
     height: min(540px, calc(100vh - 130px));
-    background: var(--acucar);
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 16px 48px rgba(42, 20, 12, .35);
@@ -757,7 +738,7 @@ a {
     height: 20px;
 }
 
-/* ================= RESPONSIVIDADE ================= */
+/* RESPONSIVIDADE */
 @media (max-width: 860px) {
     .sobre,
     .encomenda {
@@ -826,8 +807,7 @@ a {
     }
 }
 
-
-/* ===== PEDIDO: SABORES + CARRINHO + RETIRADA ===== */
+/* PEDIDO: SABORES + CARRINHO + RETIRADA */
 .pedido {
     display: grid;
     gap: 14px;
@@ -942,17 +922,10 @@ a {
     }
 }
 
-
-/* ===== FOTOS PASSANDO NO INÍCIO (só CSS) ===== */
-.hero-conteudo {
-    position: relative;
-    z-index: 1; /* deixa o texto acima das fotos */
-}
-
+/* FOTOS PASSANDO NO INÍCIO (só CSS) */
 .hero-fotos {
     position: absolute;
     inset: 0;
-    z-index: 0;
     overflow: hidden;
 }
 
@@ -988,7 +961,6 @@ a {
     5%   { opacity: 1; }
     25%  { opacity: 1; }
     30%  { opacity: 0; }
-    100% { opacity: 0; }
 }
 
 @media (max-width: 640px) {
@@ -999,6 +971,5 @@ a {
 
 /* para quem desativa animações: mostra só a primeira foto, parada */
 @media (prefers-reduced-motion: reduce) {
-    .hero-fotos img { animation: none; }
     .hero-fotos img:first-child { opacity: 1; }
 }
