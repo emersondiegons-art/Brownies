@@ -222,6 +222,6 @@ Ao enviar com tudo correto, o `script.js` mostra uma mensagem de agradecimento e
 
 ## Autoria
 
-Projeto desenvolvido por Emerson, Maria Eugênia, Renata e Thiago como atividade acadêmica.
+Projeto desenvolvido por Emerson, Maria Eugênia, e Thiago como atividade acadêmica.
 
 Curso: Tecnólogo em Inteligência Artificial.
