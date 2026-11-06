@@ -1,8 +1,6 @@
-// ==========================================
 // 1. CHATBOT (ENVIAR MENSAGENS)
-// Abrir e fechar a janela é feito só com CSS (checkbox #chat-toggle),
+// Abrir e fechar a janela é feito só com CSS (checkbox chat toggle),
 // então não precisa de JavaScript para isso.
-// ==========================================
 
 const chatMessages = document.getElementById('chat-mensagens');
 const userInput = document.getElementById('chat-input');
@@ -20,7 +18,7 @@ function appendMessage(sender, text) {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-// Mostra o "digitando..." e devolve o elemento para poder removê-lo depois
+// Mostra o "digitando..." e devolve o elemento para poder remover depois
 function showTyping() {
     const typing = document.createElement('div');
     typing.classList.add('msg', 'bot', 'digitando');
@@ -31,24 +29,44 @@ function showTyping() {
     return typing;
 }
 
+const chatHistory = [];
+
 async function handleSendMessage(text) {
     const messageText = (text ?? userInput.value).trim();
     if (!messageText) return;
 
-    // 1. Exibe a mensagem do usuário
     appendMessage('user', messageText);
     userInput.value = '';
 
-    // 2. Mostra o "digitando..." enquanto a resposta não chega
     const typing = showTyping();
 
-    // 3. Resposta temporária de teste (mock) enquanto não conecta a API.
-    // Quando a API estiver pronta, troque este trecho por uma chamada ao
-    // seu servidor (por exemplo, fetch('/api/chat', ...)).
-    // Nunca coloque a chave da API neste arquivo: qualquer visitante consegue ler.
-    await new Promise((resolve) => setTimeout(resolve, 700));
-    typing.remove();
-    appendMessage('bot', 'Hummm, brownie delicioso! Em breve estarei conectado à IA para te ajudar melhor!');
+    try {
+        const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: messageText,
+                history: chatHistory
+            })
+        });
+
+        const data = await response.json();
+        typing.remove();
+
+        if (response.ok && data.reply) {
+            chatHistory.push({ sender: 'user', text: messageText });
+            chatHistory.push({ sender: 'bot', text: data.reply });
+            appendMessage('bot', data.reply);
+        } else {
+            appendMessage('bot', 'Desculpe, ocorreu um erro ao consultar a Mel. Tente novamente em breve.');
+        }
+    } catch (err) {
+        typing.remove();
+        console.error("Erro na comunicação:", err);
+        appendMessage('bot', 'Não foi possível conectar ao servidor no momento.');
+    }
 }
 
 // Eventos de envio
@@ -68,9 +86,7 @@ if (sendMsgBtn && userInput && chatMessages) {
     });
 }
 
-// ==========================================
 // 2. PEDIDO: CARRINHO + DATA/HORÁRIO DE RETIRADA
-// ==========================================
 
 const orderForm = document.getElementById('form-encomenda');
 
@@ -99,7 +115,7 @@ if (orderForm) {
     const totalUnidades = () => carrinho.reduce((soma, item) => soma + item.qtd, 0);
     const totalPreco = () => carrinho.reduce((soma, item) => soma + item.qtd * item.preco, 0);
 
-    // ---------- Data mínima: hoje ----------
+    // Data mínima: hoje
     function formatarData(d) {
         const mes = String(d.getMonth() + 1).padStart(2, '0');
         const dia = String(d.getDate()).padStart(2, '0');
@@ -107,7 +123,7 @@ if (orderForm) {
     }
     inputData.min = formatarData(new Date());
 
-    // ---------- Mensagens de erro do carrinho ----------
+    // Mensagens de erro do carrinho
     function mostrarErroCarrinho(texto) {
         erroCarrinho.textContent = texto;
         erroCarrinho.classList.add('visivel');
@@ -118,7 +134,7 @@ if (orderForm) {
         erroCarrinho.classList.remove('visivel');
     }
 
-    // ---------- Validação da retirada (domingo, 48h, horário que já passou) ----------
+    // Validação da retirada (domingo, 48h, horário que já passou)
     function marcarErro(campo, elementoErro, mensagem) {
         campo.setCustomValidity(mensagem);
         elementoErro.textContent = mensagem;
@@ -160,7 +176,7 @@ if (orderForm) {
     inputData.addEventListener('input', validarRetirada);
     inputHora.addEventListener('input', validarRetirada);
 
-    // ---------- Desenha o carrinho na tela ----------
+    // Desenha o carrinho na tela
     function criarBotao(texto, acao, nome, rotulo) {
         const botao = document.createElement('button');
         botao.type = 'button';
@@ -204,7 +220,7 @@ if (orderForm) {
         validarRetirada(); // a regra das 48h depende da quantidade total
     }
 
-    // ---------- Adicionar sabor ----------
+    // Adicionar sabor
     function adicionar() {
         const nome = selectSabor.value;
         const qtd = parseInt(inputQtd.value, 10);
@@ -241,7 +257,7 @@ if (orderForm) {
 
     btnAdicionar.addEventListener('click', adicionar);
 
-    // ---------- Botões −, + e Remover de cada item ----------
+    // Botões de diminuir, aumentar e Remover de cada item
     listaCarrinho.addEventListener('click', (e) => {
         const botao = e.target.closest('button');
         if (!botao) return;
@@ -268,7 +284,7 @@ if (orderForm) {
         renderizar();
     });
 
-    // ---------- Botão "Encomendar" dos cards já escolhe o sabor ----------
+    // Botão "Encomendar" dos cards já escolhe o sabor
     document.querySelectorAll('.card .btn-pequeno').forEach((botao) => {
         botao.addEventListener('click', () => {
             const nome = botao.closest('.card').querySelector('h3').textContent.trim();
@@ -277,8 +293,8 @@ if (orderForm) {
         });
     });
 
-    // ---------- Envio do pedido ----------
-    // (o navegador já validou nome, e-mail, telefone, data e horário antes deste código)
+    // Envio do pedido
+    // (o navegador já validou nome, email, telefone, data e horário antes deste código)
     orderForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
