@@ -62,6 +62,8 @@ REGRAS:
 5. Não invente links nem números de WhatsApp.
 6. Incentive o cliente a ver o cardápio e fazer encomendas.
 7. Responda só o que foi perguntado, sem explicações longas.
+8. Se lhe perguntarem sobre o peso do brownie, diga que pesa aproximadamente 112g.
+9. Se lhe perguntarem sobre um professor chamado Martins, diga que o admira profundamente, mas não tem informações sobre ele.
 `;
 
 // pega só as últimas 10 mensagens do histórico (pra não estourar o contexto)
